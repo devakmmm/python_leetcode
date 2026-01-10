@@ -1,12 +1,18 @@
-#closure is a function having access to scope of its parent function even after the parent function has finished executing
-#output:
-# Inner function: blue
-# Outer function: blue
+"""
+closure.py - Closures in Python.
 
-def parent_function(person,coins):
-    
+Learning goals:
+- A closure remembers variables from its enclosing scope
+- Use nonlocal to mutate enclosed variables
+"""
 
 
+def show_section(title):
+    print("\n" + title)
+    print("-" * len(title))
+
+
+def game_factory(person, coins):
     def play_game():
         nonlocal coins
         coins -= 1
@@ -19,16 +25,54 @@ def parent_function(person,coins):
 
     return play_game
 
-tommy = parent_function("Tommy",3)
-tommy()  # Tommy has 2 coins left.
-tommy()  # Tommy has 1 coin left.
-tommy()  # Tommy has no coins left. Game over!
 
-dave = parent_function("Dave",5)
-dave()  # Dave has 2 coins left.
-dave()  # Dave has 1 coin left.
-dave()  # Dave has no coins left. Game over!
-# This code demonstrates how a closure can maintain access to the variables of its parent function even after the parent function has finished executing.
-# The inner function `play_game` modifies the `coins` variable defined in the outer function `parent_function`, showing how closures work in Python.
-# The output will show the remaining coins for each player as they play the game.
-# The closure allows each player to have their own independent game state, even though they share the same function definition.
+def counter_factory(start=0):
+    count = start
+
+    def increment():
+        nonlocal count
+        count += 1
+        return count
+
+    return increment
+
+
+NOTES = """
+Notes:
+- Closures capture variables, not their values at definition time.
+- Each call to a factory creates a separate enclosed state.
+"""
+
+
+QUESTIONS = """
+Questions:
+1) What does nonlocal do inside play_game?
+2) Why do tommy and dave not share the same coin count?
+3) How could you reset the counter produced by counter_factory?
+4) When might a class be better than a closure?
+"""
+
+
+def main():
+    show_section("Coin game")
+    tommy = game_factory("Tommy", 3)
+    tommy()
+    tommy()
+    tommy()
+
+    dave = game_factory("Dave", 2)
+    dave()
+    dave()
+
+    show_section("Counter")
+    counter = counter_factory(10)
+    print(counter())
+    print(counter())
+
+    print(NOTES.strip())
+    print()
+    print(QUESTIONS.strip())
+
+
+if __name__ == "__main__":
+    main()

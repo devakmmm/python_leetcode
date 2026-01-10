@@ -1,41 +1,70 @@
-def hello(name, lang):
-    greetings = {
-        "en": "Hello",
-        "es": "Hola",
-        "fr": "Bonjour",
-        "de": "Hallo",
-        "it": "Ciao"
-    }
+"""
+hello_person.py - A small CLI with argparse.
 
-    msg= f"{greetings[lang]}, {name}!"
-    print(msg)
+Learning goals:
+- Build a command-line interface
+- Use dictionaries to map language codes to greetings
+- Handle defaults and invalid input
+"""
+
+import argparse
+
+
+GREETINGS = {
+    "en": "Hello",
+    "es": "Hola",
+    "fr": "Bonjour",
+    "de": "Hallo",
+    "it": "Ciao",
+}
+
+
+def hello(name, lang="en"):
+    greeting = GREETINGS.get(lang, GREETINGS["en"])
+    return f"{greeting}, {name}!"
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Greet a person.")
+    parser.add_argument(
+        "-n",
+        "--name",
+        required=True,
+        help="Name of the person to greet",
+    )
+    parser.add_argument(
+        "-l",
+        "--lang",
+        default="en",
+        choices=sorted(GREETINGS.keys()),
+        help="Language for the greeting",
+    )
+    return parser.parse_args()
+
+
+NOTES = """
+Notes:
+- argparse validates inputs and prints helpful usage errors.
+- choices limits allowed values; defaults keep the CLI friendly.
+"""
+
+
+QUESTIONS = """
+Questions:
+1) What happens if you omit the --name argument?
+2) How would you add a new language to the GREETINGS dict?
+3) Why might you want to separate parse_args from hello?
+4) How would you make --lang optional with a default?
+"""
+
+
+def main():
+    args = parse_args()
+    print(hello(args.name, args.lang))
+    print(NOTES.strip())
+    print()
+    print(QUESTIONS.strip())
+
 
 if __name__ == "__main__":
-
-    import argparse
-
-    parser = argparse.ArgumentParser(description="Greet a person.")
-
-    parser.add_argument(
-        "-n", "--name", metavar="name",
-        required=True, help="Name of the person to greet"
-    )
-
-    parser.add_argument(
-        "-l", "--lang", metavar="lang",
-        default="en", choices=["en", "es", "fr", "de", "it"],
-        help="Language for the greeting (default: en)"
-    )
-
-    args = parser.parse_args()
-
-    msg = f"Hello, {args.name}!"
-
-    print(msg)
-    # This code uses argparse to create a command-line interface that requires a name argument.
-    # The name provided by the user is then used in an f-string to format a greeting message.
-    # F-strings allow for easy and readable string formatting, making it simple to include variables in strings.
-    # The argparse module is used to handle command-line arguments, making the script flexible and user-friendly.
-    # The output will display a personalized greeting based on the name provided by the user.
-    # Example usage: python hello_person.py -n Dave
-    # Output: Hello, Dave!
+    main()

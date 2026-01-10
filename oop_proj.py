@@ -1,17 +1,35 @@
-from bank import *
+"""
+oop_proj.py - Using the BankAccount classes from bank.py.
 
-Dave=BankAccount(1000,"Dave")
-Sara=BankAccount(2000,"Sara")
+Learning goals:
+- Import classes from another module
+- Create objects and call methods
+"""
 
-Dave.getBalance()
-Sara.getBalance()   
+from bank import BankAccount, SavingsAcct, BalanceError
 
-Dave.deposit(500)
-Sara.withdraw(300)
 
-Dave.withdraw(2000)
-Sara.withdraw(1000)
+def main():
+    dave = BankAccount(1000, "Dave")
+    sara = SavingsAcct(2000, "Sara")
 
-Dave.getBalance()
-Sara.getBalance()
+    print("Dave:", dave.get_balance())
+    print("Sara:", sara.get_balance())
 
+    dave.deposit(500)
+    sara.withdraw(300)
+    print("Dave after deposit:", dave.get_balance())
+    print("Sara after withdraw:", sara.get_balance())
+
+    try:
+        dave.withdraw(2000)
+    except BalanceError as exc:
+        print("Withdraw failed:", exc)
+
+    dave.transfer(200, sara)
+    print("Dave after transfer:", dave.get_balance())
+    print("Sara after transfer:", sara.get_balance())
+
+
+if __name__ == "__main__":
+    main()

@@ -1,35 +1,79 @@
-#f_strings
+"""
+fstring.py - String formatting with f-strings.
 
-person="Dave"
-coins=3
+Learning goals:
+- Basic f-string usage
+- Formatting numbers and alignment
+- Accessing dict values inside f-strings
+- Comparing with older formatting styles
+"""
 
-print(f"{person} has {coins} coins left.") # This code demonstrates the use of f-strings in Python to format strings with variables.
-# The output will show the person's name and the number of coins they have left.
-# F-strings provide a concise way to embed expressions inside string literals, using curly braces `{}`.
-# This feature was introduced in Python 3.6 and is a preferred way to format strings due to its readability and efficiency.
-
-message= "\n%s has %s coins left." % (person, coins)  # This code demonstrates the use of the old-style string formatting in Python.
-print(message)  # The output will show the person's name and the number of coins they have left.
-# This method uses the `%` operator to format strings, where `%s` is a placeholder for string values.
-# While this method is still valid, f-strings are generally preferred in modern Python code for their clarity and ease of use.
-
-player = {
-    "person": "Alice",
-    "coins": 5
-}
-print(f"{player['person']} has {coins} coins left.") # This code demonstrates the use of f-strings in Python to format strings with variables, including accessing values from a dictionary.
-# The output will show the person's name from the dictionary and the number of coins they have left.
-# F-strings provide a concise way to embed expressions inside string literals, using curly braces `{}`.
-# This feature was introduced in Python 3.6 and is a preferred way to format strings due to its readability and efficiency.
+from datetime import datetime
 
 
-#formatting with f-strings
+def show_section(title):
+    print("\n" + title)
+    print("-" * len(title))
 
-num=10
-print(f"2.25 times {num} is {2.25 * num:.2f} ")  # This code demonstrates the use of f-strings in Python to format strings with variables and expressions.
-# The output will show the result of multiplying 2.25 by the variable `num`, formatted to two decimal places.
-# The expression `{2.25 * num:.2f}` inside the f-string calculates the product and formats it as a floating-point number with two decimal places.
-# F-strings provide a concise way to embed expressions inside string literals, using curly braces `{}`.
-# This feature was introduced in Python 3.6 and is a preferred way to format strings due to its readability and efficiency.
 
-print(f"2.25 times {num} is {2.25 / num:.2%} ")  # This code demonstrates the use of f-strings in Python to format strings with variables and expressions.
+def basic_examples():
+    show_section("Basics")
+    person = "Dave"
+    coins = 3
+    print(f"{person} has {coins} coins left.")
+
+    player = {"person": "Alice", "coins": 5}
+    print(f"{player['person']} has {player['coins']} coins left.")
+
+
+def formatting_examples():
+    show_section("Formatting")
+    num = 10
+    print(f"2.25 times {num} is {2.25 * num:.2f}")
+    print(f"2.25 divided by {num} is {2.25 / num:.2%}")
+    print(f"padded: |{num:>6}| |{num:<6}| |{num:^6}|")
+
+    today = datetime(2024, 1, 15)
+    print(f"date: {today:%Y-%m-%d}")
+
+
+def other_styles():
+    show_section("Other formatting styles")
+    person = "Dave"
+    coins = 3
+    old = "%s has %s coins left." % (person, coins)
+    newer = "{} has {} coins left.".format(person, coins)
+    print("percent:", old)
+    print("format:", newer)
+
+
+NOTES = """
+Notes:
+- F-strings evaluate expressions at runtime and are easy to read.
+- Format specifiers like .2f or :>6 control precision and alignment.
+- Use double quotes around f-strings when you need single quotes inside.
+"""
+
+
+QUESTIONS = """
+Questions:
+1) What does :.2f do in an f-string?
+2) How do you right-align a number in 10 characters?
+3) Why might you still see .format() in older codebases?
+4) How would you format a number as a percentage with 1 decimal?
+5) What is the output of f"{2 + 3=}" in Python 3.8+?
+"""
+
+
+def main():
+    basic_examples()
+    formatting_examples()
+    other_styles()
+
+    print(NOTES.strip())
+    print()
+    print(QUESTIONS.strip())
+
+
+if __name__ == "__main__":
+    main()

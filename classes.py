@@ -1,54 +1,89 @@
+"""
+classes.py - Classes, inheritance, and polymorphism.
+
+Learning goals:
+- Define classes and instance methods
+- Inherit and override methods
+- Use super() to call parent behavior
+"""
+
+
 class Vehicle:
-    def __init__(self,make, model):
+    wheels = 0
+
+    def __init__(self, make, model):
         self.make = make
         self.model = model
-        
-    def moves(self): #refer to itself
+
+    def moves(self):
         print("The vehicle moves")
 
     def get_make_and_model(self):
-        print( f"{self.make} {self.model}")
-    
-# Create an instance of the Vehicle class
+        return f"{self.make} {self.model}"
 
-mycar = Vehicle('Toyota', 'Corolla')
-print(mycar.make)  # Output: Toyota
-print(mycar.model)  # Output: Corolla   
-mycar.moves()  # Output: The vehicle moves
-# This code defines a simple class named Vehicle with a method moves that prints a message when called.
-# An instance of the Vehicle class is created and the moves method is invoked, demonstrating basic class and method usage in Python.
-
-mycar.get_make_and_model()  # Output: Toyota Corolla
-# This code defines a method get_make_and_model within the Vehicle class that prints
+    def __str__(self):
+        return f"{self.__class__.__name__}({self.get_make_and_model()})"
 
 
-class Airplane(Vehicle): #inheritance
+class Airplane(Vehicle):
+    def __init__(self, make, model, wings):
+        super().__init__(make, model)
+        self.wings = wings
+
     def moves(self):
         print("The airplane flies")
 
-class Boat(Vehicle): #inheritance
+
+class Boat(Vehicle):
     def moves(self):
         print("The boat sails")
 
-class golfcart(Vehicle): #inheritance
-    pass
 
-        
-myplane = Airplane("Boeing", "747")
-myboat = Boat("Yamaha", "242X")
-mygolfcart = golfcart("Club Car", "Precedent")
+class GolfCart(Vehicle):
+    wheels = 4
 
-myplane.get_make_and_model()  # Output: Boeing 747
-myplane.moves()  # Output: The airplane flies
 
-myboat.get_make_and_model()  # Output: Yamaha 242X
-myboat.moves()  # Output: The boat sails
+def demo_objects():
+    print("\nObjects")
+    print("-------")
+    mycar = Vehicle("Toyota", "Corolla")
+    myplane = Airplane("Boeing", "747", "Two")
+    myboat = Boat("Yamaha", "242X")
+    mycart = GolfCart("Club Car", "Precedent")
 
-mygolfcart.get_make_and_model()  # Output: Club Car Precedent
-mygolfcart.moves()  # Output: The vehicle moves
-# This code demonstrates inheritance in Python by defining subclasses Airplane, Boat, and golfcart that inherit from the Vehicle class.
-# Each subclass overrides the moves method to provide specific behavior for airplanes and boats, while golfcart uses the inherited method from Vehicle.
-# Instances of each subclass are created, and their methods are called to show how inheritance and method overriding work in Python. the make and model of the vehicle using an f-string for formatting.
-# An instance of the Vehicle class is created, and the get_make_and_model method is called to display the vehicle's details.
-# This demonstrates how to define and use methods within a class in Python.
+    print("mycar:", mycar.get_make_and_model())
+    print("myplane:", myplane.get_make_and_model())
+    print("myboat:", myboat.get_make_and_model())
+    print("mycart:", mycart.get_make_and_model())
 
+    for v in (mycar, myplane, myboat, mycart):
+        v.moves()
+        print("str:", str(v), "wheels:", v.wheels)
+
+
+NOTES = """
+Notes:
+- self is the instance; methods can read and modify instance data.
+- Inheritance lets subclasses reuse and override behavior.
+- Polymorphism lets different classes share the same interface.
+"""
+
+
+QUESTIONS = """
+Questions:
+1) What is the difference between a class variable and an instance variable?
+2) Why do we call super().__init__ in Airplane?
+3) What happens if a subclass does not override moves?
+4) When should you use composition instead of inheritance?
+"""
+
+
+def main():
+    demo_objects()
+    print(NOTES.strip())
+    print()
+    print(QUESTIONS.strip())
+
+
+if __name__ == "__main__":
+    main()
