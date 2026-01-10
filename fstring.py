@@ -26,6 +26,23 @@ def basic_examples():  # Define a demo for basic f-string usage.
     print(f"{player['person']} has {player['coins']} coins left.")  # Access dict in f-string.
 
 
+EXAMPLE_WALKTHROUGH_BASIC = """  # Store a walkthrough for basic_examples.
+Example Walkthrough: basic_examples
+- show_section("Basics"):
+  prints the "Basics" header and underline.
+- person = "Dave":
+  sets person to "Dave".
+- coins = 3:
+  sets coins to 3.
+- print(f"{person} has {coins} coins left."):
+  outputs: Dave has 3 coins left.
+- player = {"person": "Alice", "coins": 5}:
+  creates a dict with a name and coins.
+- print(f"{player['person']} has {player['coins']} coins left."):
+  outputs: Alice has 5 coins left.
+"""
+
+
 def formatting_examples():  # Define a demo for formatting numbers and dates.
     show_section("Formatting")  # Display the section header.
     num = 10  # Store a number for math examples.
@@ -37,6 +54,25 @@ def formatting_examples():  # Define a demo for formatting numbers and dates.
     print(f"date: {today:%Y-%m-%d}")  # Format the date using strftime syntax.
 
 
+EXAMPLE_WALKTHROUGH_FORMATTING = """  # Store a walkthrough for formatting_examples.
+Example Walkthrough: formatting_examples
+- show_section("Formatting"):
+  prints the "Formatting" header and underline.
+- num = 10:
+  sets num to 10.
+- print(f"2.25 times {num} is {2.25 * num:.2f}"):
+  outputs: 2.25 times 10 is 22.50
+- print(f"2.25 divided by {num} is {2.25 / num:.2%}"):
+  outputs: 2.25 divided by 10 is 22.50%
+- print(f"padded: |{num:>6}| |{num:<6}| |{num:^6}|"):
+  outputs: padded: |    10| |10    | |  10  |
+- today = datetime(2024, 1, 15):
+  creates a date object.
+- print(f"date: {today:%Y-%m-%d}"):
+  outputs: date: 2024-01-15
+"""
+
+
 def other_styles():  # Define a demo for older formatting styles.
     show_section("Other formatting styles")  # Display the section header.
     person = "Dave"  # Store a name for formatting examples.
@@ -45,6 +81,25 @@ def other_styles():  # Define a demo for older formatting styles.
     newer = "{} has {} coins left.".format(person, coins)  # Use str.format.
     print("percent:", old)  # Print the percent-formatted string.
     print("format:", newer)  # Print the format-formatted string.
+
+
+EXAMPLE_WALKTHROUGH_OTHER = """  # Store a walkthrough for other_styles.
+Example Walkthrough: other_styles
+- show_section("Other formatting styles"):
+  prints the "Other formatting styles" header and underline.
+- person = "Dave":
+  sets person to "Dave".
+- coins = 3:
+  sets coins to 3.
+- old = "%s has %s coins left." % (person, coins):
+  builds a percent-formatted string.
+- newer = "{} has {} coins left.".format(person, coins):
+  builds a format() string.
+- print("percent:", old):
+  outputs: percent: Dave has 3 coins left.
+- print("format:", newer):
+  outputs: format: Dave has 3 coins left.
+"""
 
 
 NOTES = """  # Store study notes as a multiline string.
@@ -73,6 +128,23 @@ def main():  # Define the script entry point.
     print(NOTES.strip())  # Print notes without extra whitespace.
     print()  # Print a blank line between notes and questions.
     print(QUESTIONS.strip())  # Print questions for review.
+
+
+EXAMPLE_WALKTHROUGH_MAIN = """  # Store a walkthrough for main.
+Example Walkthrough: main
+- basic_examples():
+  runs the basic f-string section.
+- formatting_examples():
+  runs the formatting section.
+- other_styles():
+  runs the alternative formatting section.
+- print(NOTES.strip()):
+  prints the Notes block.
+- print():
+  prints a blank line.
+- print(QUESTIONS.strip()):
+  prints the Questions block.
+"""
 
 
 if __name__ == "__main__":  # Run main only when executed directly.
