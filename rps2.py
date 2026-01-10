@@ -31,6 +31,23 @@ def get_choice():  # Define a function to read valid user input.
         print("Invalid choice.")  # Prompt again for invalid input.
 
 
+EXAMPLE_WALKTHROUGH_GET_CHOICE = """  # Store a walkthrough for get_choice.
+Example Walkthrough: get_choice
+- while True:
+  keeps asking until valid input is entered.
+- input(...).strip():
+  reads and trims user input.
+- if raw in CHOICES:
+  checks for "1", "2", or "3".
+- return CHOICES[raw]:
+  returns the matching enum member.
+- print("Invalid choice."):
+  runs only on invalid input.
+Example usage:
+- input "2" returns RPS.PAPER.
+"""
+
+
 def decide_winner(player, computer):  # Define the winner logic.
     if player == computer:  # Check for a tie.
         return "tie"  # Return a tie result.
@@ -40,6 +57,19 @@ def decide_winner(player, computer):  # Define the winner logic.
         RPS.SCISSORS: RPS.PAPER,  # Scissors beats paper.
     }  # End the wins mapping.
     return "win" if wins[player] == computer else "lose"  # Decide win or lose.
+
+
+EXAMPLE_WALKTHROUGH_DECIDE = """  # Store a walkthrough for decide_winner.
+Example Walkthrough: decide_winner
+- if player == computer:
+  returns "tie" when both choices are the same.
+- wins mapping:
+  defines which choice beats which.
+- return "win" if wins[player] == computer else "lose":
+  returns "win" or "lose".
+Example usage:
+- decide_winner(RPS.PAPER, RPS.ROCK) returns "win".
+"""
 
 
 def main():  # Define the script entry point.
@@ -61,6 +91,31 @@ def main():  # Define the script entry point.
     print(NOTES.strip())  # Print notes without extra whitespace.
     print()  # Print a blank line between notes and questions.
     print(QUESTIONS.strip())  # Print questions for review.
+
+
+EXAMPLE_WALKTHROUGH_MAIN = """  # Store a walkthrough for main.
+Example Walkthrough: main
+- score = {"win": 0, "lose": 0, "tie": 0}:
+  initializes the score dictionary.
+- while True:
+  repeats rounds until the user quits.
+- player = get_choice():
+  reads the player's choice.
+- computer = random.choice(list(RPS)):
+  picks a random computer choice.
+- result = decide_winner(...):
+  computes win/lose/tie.
+- score[result] += 1:
+  updates the score.
+- again = input(...):
+  asks to play again.
+- if again not in ("yes", "y"):
+  breaks the loop.
+- print("Thanks for playing!"):
+  outputs the goodbye message.
+- print(NOTES.strip()) / print(QUESTIONS.strip()):
+  prints Notes and Questions blocks.
+"""
 
 
 NOTES = """  # Store study notes as a multiline string.

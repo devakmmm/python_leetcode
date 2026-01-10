@@ -131,5 +131,22 @@ def main():  # Define the script entry point.
     print(QUESTIONS.strip())  # Print questions for review.
 
 
+EXAMPLE_WALKTHROUGH_MAIN = """  # Store a walkthrough for main.
+Example Walkthrough: main
+- explain_digit_class():
+  runs the \\d section and prints its outputs.
+- explain_plus_quantifier():
+  runs the \\d+ section and prints its outputs.
+- compare_findall():
+  compares \\d vs \\d+ with findall.
+- print(NOTES.strip()):
+  prints the Notes block.
+- print():
+  prints a blank line.
+- print(QUESTIONS.strip()):
+  prints the Questions block.
+"""
+
+
 if __name__ == "__main__":  # Run main only when executed directly.
     main()  # Invoke the entry point.

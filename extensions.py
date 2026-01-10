@@ -29,6 +29,21 @@ def extension_examples():  # Define a demo for extension inspection.
         print("path:", p, "suffix:", p.suffix, "suffixes:", p.suffixes, "stem:", p.stem)  # Show parts.
 
 
+EXAMPLE_WALKTHROUGH_EXTENSION = """  # Store a walkthrough for extension_examples.
+Example Walkthrough: extension_examples
+- show_section("File extensions"):
+  prints the section header.
+- paths = [Path("report.pdf"), Path("archive.tar.gz"), ...]:
+  creates Path objects with different suffix patterns.
+- for p in paths:
+  iterates over each Path.
+- print(...):
+  prints the path, suffix, suffixes, and stem for each.
+Example output line:
+- path: report.pdf suffix: .pdf suffixes: ['.pdf'] stem: report
+"""
+
+
 def build_paths():  # Define a demo for building paths.
     show_section("Building paths")  # Display the section header.
     base = Path("projects") / "demo"  # Join path components safely.
@@ -36,6 +51,23 @@ def build_paths():  # Define a demo for building paths.
     print("base:", base)  # Print the base path.
     print("file:", file_path)  # Print the file path.
     print("with different suffix:", file_path.with_suffix(".json"))  # Change extension.
+
+
+EXAMPLE_WALKTHROUGH_BUILD = """  # Store a walkthrough for build_paths.
+Example Walkthrough: build_paths
+- show_section("Building paths"):
+  prints the section header.
+- base = Path("projects") / "demo":
+  builds a path like projects/demo.
+- file_path = base / "data.csv":
+  builds a path like projects/demo/data.csv.
+- print("base:", base):
+  outputs: base: projects/demo
+- print("file:", file_path):
+  outputs: file: projects/demo/data.csv
+- print("with different suffix:", file_path.with_suffix(".json")):
+  outputs: with different suffix: projects/demo/data.json
+"""
 
 
 NOTES = """  # Store study notes as a multiline string.
@@ -60,6 +92,21 @@ def main():  # Define the script entry point.
     print(NOTES.strip())  # Print notes without extra whitespace.
     print()  # Print a blank line between notes and questions.
     print(QUESTIONS.strip())  # Print questions for review.
+
+
+EXAMPLE_WALKTHROUGH_MAIN = """  # Store a walkthrough for main.
+Example Walkthrough: main
+- extension_examples():
+  runs the file extension section.
+- build_paths():
+  runs the path building section.
+- print(NOTES.strip()):
+  prints the Notes block.
+- print():
+  prints a blank line.
+- print(QUESTIONS.strip()):
+  prints the Questions block.
+"""
 
 
 if __name__ == "__main__":  # Run main only when executed directly.

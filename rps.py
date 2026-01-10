@@ -32,8 +32,36 @@ def get_player_choice():  # Define a function to read valid user input.
         print("Invalid choice. Try again.")  # Prompt again for invalid input.
 
 
+EXAMPLE_WALKTHROUGH_GET_PLAYER = """  # Store a walkthrough for get_player_choice.
+Example Walkthrough: get_player_choice
+- while True:
+  keeps asking until valid input is entered.
+- input(...).strip():
+  reads and trims user input.
+- if choice in CHOICES:
+  checks for "1", "2", or "3".
+- return CHOICES[choice]:
+  returns the matching enum member.
+- print("Invalid choice. Try again."):
+  runs only on invalid input.
+Example usage:
+- input "1" returns RPS.ROCK.
+"""
+
+
 def get_computer_choice():  # Define a function to pick a random choice.
     return random.choice(list(RPS))  # Return a random enum value.
+
+
+EXAMPLE_WALKTHROUGH_GET_COMPUTER = """  # Store a walkthrough for get_computer_choice.
+Example Walkthrough: get_computer_choice
+- list(RPS):
+  creates a list of enum members.
+- random.choice(...):
+  selects one member at random.
+Example usage:
+- returns RPS.PAPER (random).
+"""
 
 
 def decide_winner(player, computer):  # Define the winner logic.
@@ -45,6 +73,20 @@ def decide_winner(player, computer):  # Define the winner logic.
         RPS.SCISSORS: RPS.PAPER,  # Scissors beats paper.
     }  # End the wins mapping.
     return "win" if wins[player] == computer else "lose"  # Decide win or lose.
+
+
+EXAMPLE_WALKTHROUGH_DECIDE = """  # Store a walkthrough for decide_winner.
+Example Walkthrough: decide_winner
+- if player == computer:
+  returns "tie" when both choices are the same.
+- wins mapping:
+  defines which choice beats which.
+- return "win" if wins[player] == computer else "lose":
+  returns "win" for a player win, otherwise "lose".
+Example usage:
+- decide_winner(RPS.ROCK, RPS.SCISSORS) returns "win".
+- decide_winner(RPS.ROCK, RPS.PAPER) returns "lose".
+"""
 
 
 def main():  # Define the script entry point.
@@ -65,6 +107,23 @@ def main():  # Define the script entry point.
     print(NOTES.strip())  # Print notes without extra whitespace.
     print()  # Print a blank line between notes and questions.
     print(QUESTIONS.strip())  # Print questions for review.
+
+
+EXAMPLE_WALKTHROUGH_MAIN = """  # Store a walkthrough for main.
+Example Walkthrough: main
+- player = get_player_choice():
+  reads and validates player input.
+- computer = get_computer_choice():
+  picks a random computer choice.
+- print choices:
+  outputs the enum names for each.
+- result = decide_winner(player, computer):
+  computes win/lose/tie.
+- prints outcome message:
+  outputs "You win!", "You lose!", or "It's a tie!".
+- print(NOTES.strip()) / print(QUESTIONS.strip()):
+  prints Notes and Questions blocks.
+"""
 
 
 NOTES = """  # Store study notes as a multiline string.

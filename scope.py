@@ -24,6 +24,25 @@ def local_and_global():  # Define a demo for local vs global scope.
     print("outer color:", color)  # Print the outer variable.
 
 
+EXAMPLE_WALKTHROUGH_LOCAL = """  # Store a walkthrough for local_and_global.
+Example Walkthrough: local_and_global
+- show_section("Local and global"):
+  prints the "Local and global" header and underline.
+- color = "red":
+  sets a local variable in local_and_global.
+- def inner():
+  defines an inner function with its own scope.
+- local_color = "blue":
+  sets a variable local to inner.
+- print("inner local_color:", local_color):
+  outputs: inner local_color: blue
+- inner():
+  calls the inner function.
+- print("outer color:", color):
+  outputs: outer color: red
+"""
+
+
 def nonlocal_example():  # Define a demo for nonlocal usage.
     show_section("nonlocal")  # Display the section header.
     color = "red"  # Define an outer-scope variable.
@@ -42,6 +61,29 @@ def nonlocal_example():  # Define a demo for nonlocal usage.
     outer()  # Call the enclosing function.
 
 
+EXAMPLE_WALKTHROUGH_NONLOCAL = """  # Store a walkthrough for nonlocal_example.
+Example Walkthrough: nonlocal_example
+- show_section("nonlocal"):
+  prints the "nonlocal" header and underline.
+- color = "red":
+  sets a variable in nonlocal_example scope.
+- def outer():
+  defines an enclosing function.
+- color = "green":
+  shadows the outer variable inside outer.
+- def inner():
+  defines an inner function.
+- nonlocal color:
+  allows inner to rebind outer's color.
+- color = "blue":
+  changes color in the enclosing scope.
+- print("inner color:", color):
+  outputs: inner color: blue
+- print("outer color:", color):
+  outputs: outer color: blue
+"""
+
+
 def global_example():  # Define a demo that mutates a global-like object.
     show_section("global")  # Display the section header.
     counter = {"value": 0}  # Use a dict to mutate without global.
@@ -52,6 +94,25 @@ def global_example():  # Define a demo that mutates a global-like object.
 
     increment()  # Call increment once.
     increment()  # Call increment again.
+
+
+EXAMPLE_WALKTHROUGH_GLOBAL = """  # Store a walkthrough for global_example.
+Example Walkthrough: global_example
+- show_section("global"):
+  prints the "global" header and underline.
+- counter = {"value": 0}:
+  creates a dict used as a mutable counter.
+- def increment():
+  defines a function that mutates the dict.
+- counter["value"] += 1:
+  increments the counter value.
+- print("counter:", counter["value"]):
+  outputs the updated count.
+- increment():
+  outputs: counter: 1
+- increment():
+  outputs: counter: 2
+"""
 
 
 NOTES = """  # Store study notes as a multiline string.
@@ -79,6 +140,23 @@ def main():  # Define the script entry point.
     print(NOTES.strip())  # Print notes without extra whitespace.
     print()  # Print a blank line between notes and questions.
     print(QUESTIONS.strip())  # Print questions for review.
+
+
+EXAMPLE_WALKTHROUGH_MAIN = """  # Store a walkthrough for main.
+Example Walkthrough: main
+- local_and_global():
+  runs the local vs global example.
+- nonlocal_example():
+  runs the nonlocal example.
+- global_example():
+  runs the global example.
+- print(NOTES.strip()):
+  prints the Notes block.
+- print():
+  prints a blank line.
+- print(QUESTIONS.strip()):
+  prints the Questions block.
+"""
 
 
 if __name__ == "__main__":  # Run main only when executed directly.

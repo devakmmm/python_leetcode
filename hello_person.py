@@ -24,6 +24,17 @@ def hello(name, lang="en"):  # Define a greeting function with a language code.
     return f"{greeting}, {name}!"  # Build and return the greeting.
 
 
+EXAMPLE_WALKTHROUGH_HELLO = """  # Store a walkthrough for hello.
+Example Walkthrough: hello
+- greeting = GREETINGS.get(lang, GREETINGS["en"]):
+  looks up the greeting for the language code, defaults to English.
+- return f"{greeting}, {name}!":
+  returns a greeting string.
+Example usage:
+- hello("Dave", "fr") returns "Bonjour, Dave!"
+"""
+
+
 def parse_args():  # Define a function to parse CLI arguments.
     parser = argparse.ArgumentParser(description="Greet a person.")  # Create a parser.
     parser.add_argument(  # Add the name argument.
@@ -40,6 +51,22 @@ def parse_args():  # Define a function to parse CLI arguments.
         help="Language for the greeting",  # Describe the argument.
     )  # End the language argument definition.
     return parser.parse_args()  # Parse and return the CLI arguments.
+
+
+EXAMPLE_WALKTHROUGH_PARSE_ARGS = """  # Store a walkthrough for parse_args.
+Example Walkthrough: parse_args
+- parser = argparse.ArgumentParser(...):
+  creates an argument parser with a description.
+- parser.add_argument("-n", "--name", required=True, ...):
+  defines a required name argument.
+- parser.add_argument("-l", "--lang", default="en", choices=...):
+  defines an optional language argument.
+- return parser.parse_args():
+  reads CLI arguments and returns a namespace.
+Example usage:
+- python3 hello_person.py -n Dave -l es
+  results in args.name="Dave", args.lang="es".
+"""
 
 
 NOTES = """  # Store study notes as a multiline string.
@@ -64,6 +91,21 @@ def main():  # Define the script entry point.
     print(NOTES.strip())  # Print notes without extra whitespace.
     print()  # Print a blank line between notes and questions.
     print(QUESTIONS.strip())  # Print questions for review.
+
+
+EXAMPLE_WALKTHROUGH_MAIN = """  # Store a walkthrough for main.
+Example Walkthrough: main
+- args = parse_args():
+  reads the CLI inputs.
+- print(hello(args.name, args.lang)):
+  prints the greeting for the chosen language.
+- print(NOTES.strip()):
+  prints the Notes block.
+- print():
+  prints a blank line.
+- print(QUESTIONS.strip()):
+  prints the Questions block.
+"""
 
 
 if __name__ == "__main__":  # Run main only when executed directly.

@@ -47,6 +47,31 @@ def dict_syntax_and_constructor():  # Define a demo for dict creation styles.
     print("tuple key:", ok_dict)  # Print the dict with a tuple key.
 
 
+EXAMPLE_WALKTHROUGH_SYNTAX = """  # Store a walkthrough for dict_syntax_and_constructor.
+Example Walkthrough: dict_syntax_and_constructor
+- show_section("Dictionaries: literals and dict()"):
+  prints the section header.
+- dictionary = {"key1": "value1", "key2": "value2"}:
+  creates a dict literal.
+- print("literal:", dictionary):
+  outputs: literal: {'key1': 'value1', 'key2': 'value2'}
+- pizza = dict([...]):
+  builds a dict from key/value tuples.
+- print("dict constructor:", pizza):
+  outputs the pizza dict with name, price, calories, toppings.
+- print("bracket access:", pizza["name"]):
+  outputs: bracket access: Margherita Pizza
+- print("get with default:", pizza.get("total_time", 0)):
+  outputs: get with default: 0
+- bad_key = [1, 2] and bad_dict = {bad_key: "nope"}:
+  raises TypeError because lists are unhashable.
+- ok_key = (1, 2):
+  creates a tuple key (hashable).
+- print("tuple key:", ok_dict):
+  outputs: tuple key: {(1, 2): 'tuple key ok'}
+"""
+
+
 def dict_methods():  # Define a demo for common dictionary methods.
     show_section("Common dictionary methods")  # Display the section header.
     pizza = {  # Define a sample dictionary.
@@ -82,6 +107,27 @@ def dict_methods():  # Define a demo for common dictionary methods.
     print("clear:", temp)  # Print the now-empty dict.
 
 
+EXAMPLE_WALKTHROUGH_METHODS = """  # Store a walkthrough for dict_methods.
+Example Walkthrough: dict_methods
+- show_section("Common dictionary methods"):
+  prints the section header.
+- keys_view = pizza.keys(), values_view = pizza.values(), items_view = pizza.items():
+  creates live view objects.
+- print views:
+  outputs dict_keys(...), dict_values(...), dict_items(...).
+- pizza.update({"price": 15, "total_time": 25}):
+  updates price and adds total_time.
+- removed_price = pizza.pop("price", 10):
+  removes "price" and returns its value.
+- pizza.pop("total_price"):
+  raises KeyError because key is missing.
+- last_key, last_value = pizza.popitem():
+  removes and returns the last inserted item.
+- temp.clear():
+  empties the temp dict.
+"""
+
+
 def dict_looping():  # Define a demo for iterating over dictionaries.
     show_section("Looping over dictionaries")  # Display the section header.
     products = {  # Define a sample products dictionary.
@@ -113,6 +159,27 @@ def dict_looping():  # Define a demo for iterating over dictionaries.
         print("enumerate start=1:", index, item)  # Print index and item tuple.
 
 
+EXAMPLE_WALKTHROUGH_LOOPING = """  # Store a walkthrough for dict_looping.
+Example Walkthrough: dict_looping
+- show_section("Looping over dictionaries"):
+  prints the section header.
+- for price in products.values():
+  prints each price value.
+- for product in products.keys():
+  prints each key.
+- for product in products:
+  prints each key (same as keys()).
+- for product in products.items():
+  prints each (key, value) tuple.
+- for product, price in products.items():
+  prints key and value separately.
+- enumerate(products.items()):
+  yields (0, ('Laptop', 990)) and so on.
+- enumerate(products.items(), 1):
+  yields (1, ('Laptop', 990)) and so on.
+"""
+
+
 def nested_dict_and_comprehension():  # Define a demo for nested dicts.
     show_section("Nested dictionaries and comprehensions")  # Display header.
     bands = {  # Define a nested dictionary of bands.
@@ -135,6 +202,21 @@ def nested_dict_and_comprehension():  # Define a demo for nested dicts.
     print("member counts:", member_counts)  # Print the counts.
 
 
+EXAMPLE_WALKTHROUGH_NESTED = """  # Store a walkthrough for nested_dict_and_comprehension.
+Example Walkthrough: nested_dict_and_comprehension
+- show_section("Nested dictionaries and comprehensions"):
+  prints the section header.
+- bands = {...}:
+  creates a nested dict of bands with members and genre.
+- print("Queen members:", bands["Queen"]["members"]):
+  outputs Queen's member list.
+- member_counts = {...}:
+  builds a dict of band name to member count.
+- print("member counts:", member_counts):
+  outputs counts like {'The Beatles': 4, 'Queen': 4, 'Nirvana': 3}.
+"""
+
+
 def dict_copying():  # Define a demo for copying and aliasing.
     show_section("Copying vs aliasing (shallow copy)")  # Display header.
     original = {"a": 1, "b": {"nested": 2}}  # Define a nested dict.
@@ -147,6 +229,27 @@ def dict_copying():  # Define a demo for copying and aliasing.
     print("original:", original)  # Print the original dict.
     print("alias:", alias)  # Print the alias dict.
     print("shallow:", shallow)  # Print the shallow copy.
+
+
+EXAMPLE_WALKTHROUGH_COPYING = """  # Store a walkthrough for dict_copying.
+Example Walkthrough: dict_copying
+- original = {"a": 1, "b": {"nested": 2}}:
+  creates a nested dict.
+- alias = original:
+  alias references the same object.
+- shallow = original.copy():
+  creates a shallow copy.
+- original["a"] = 10:
+  changes the top-level value.
+- original["b"]["nested"] = 99:
+  changes the nested value.
+- print("original:", original):
+  shows the updated values.
+- print("alias:", alias):
+  matches original because it's the same object.
+- print("shallow:", shallow):
+  shows updated nested value but old top-level "a".
+"""
 
 
 def set_basics():  # Define a demo for set creation and methods.
@@ -175,6 +278,27 @@ def set_basics():  # Define a demo for set creation and methods.
     print("clear:", temp)  # Print the cleared set.
 
 
+EXAMPLE_WALKTHROUGH_SET_BASICS = """  # Store a walkthrough for set_basics.
+Example Walkthrough: set_basics
+- show_section("Sets: creation and methods"):
+  prints the section header.
+- my_set = {1, 2, 3, 4, 5}:
+  creates a set.
+- empty_set = set():
+  creates an empty set.
+- my_set.add(6):
+  adds 6 to the set.
+- my_set.remove(4):
+  removes 4 (raises if missing).
+- my_set.remove(42):
+  raises KeyError because 42 is missing.
+- my_set.discard(42):
+  does nothing when item is missing.
+- temp.clear():
+  empties the copied set.
+"""
+
+
 def set_operations():  # Define a demo for set operations.
     show_section("Set operations")  # Display header.
     my_set = {1, 2, 3, 4, 5}  # Define the first set.
@@ -192,6 +316,25 @@ def set_operations():  # Define a demo for set operations.
     print("5 in my_set:", 5 in my_set)  # Check membership with in.
 
 
+EXAMPLE_WALKTHROUGH_SET_OPS = """  # Store a walkthrough for set_operations.
+Example Walkthrough: set_operations
+- show_section("Set operations"):
+  prints the section header.
+- issubset / issuperset / isdisjoint:
+  checks set relationships.
+- my_set | your_set:
+  union -> {1, 2, 3, 4, 5, 6}
+- my_set & your_set:
+  intersection -> {2, 3, 4}
+- my_set - your_set:
+  difference -> {1, 5}
+- my_set ^ your_set:
+  symmetric difference -> {1, 5, 6}
+- print("5 in my_set:", 5 in my_set):
+  outputs: 5 in my_set: True
+"""
+
+
 def standard_library_imports():  # Define a demo for import statements.
     show_section("Python standard library imports")  # Display header.
     import math as m  # Import math with an alias.
@@ -206,6 +349,25 @@ def standard_library_imports():  # Define a demo for import statements.
     print("cos:", cos(angle_radians))  # Compute cosine.
 
 
+EXAMPLE_WALKTHROUGH_IMPORTS = """  # Store a walkthrough for standard_library_imports.
+Example Walkthrough: standard_library_imports
+- import math as m:
+  imports math with alias m.
+- from math import radians, sin, cos:
+  imports specific functions.
+- print("math.sqrt(36):", math.sqrt(36)):
+  outputs: math.sqrt(36): 6.0
+- print("m.sqrt(36):", m.sqrt(36)):
+  outputs: m.sqrt(36): 6.0
+- angle_degrees = 40 / angle_radians = radians(angle_degrees):
+  converts degrees to radians.
+- print("sin:", sin(angle_radians)):
+  outputs a sine value (~0.6428).
+- print("cos:", cos(angle_radians)):
+  outputs a cosine value (~0.7660).
+"""
+
+
 def name_guard_example():  # Define a demo for the __name__ guard.
     show_section("__name__ and main guard")  # Display header.
     print("__name__ in this module:", __name__)  # Show this module's name.
@@ -213,6 +375,19 @@ def name_guard_example():  # Define a demo for the __name__ guard.
         print("Running as a script")  # Print the script message.
     else:  # Otherwise, assume it was imported.
         print("Imported as a module")  # Print the import message.
+
+
+EXAMPLE_WALKTHROUGH_NAME_GUARD = """  # Store a walkthrough for name_guard_example.
+Example Walkthrough: name_guard_example
+- show_section("__name__ and main guard"):
+  prints the section header.
+- print("__name__ in this module:", __name__):
+  outputs __main__ when run directly.
+- if __name__ == "__main__":
+  prints "Running as a script" when run directly.
+- else:
+  prints "Imported as a module" when imported.
+"""
 
 
 NOTES = """  # Store study notes as a multiline string.
@@ -254,6 +429,35 @@ def main():  # Define the script entry point.
     print(NOTES.strip())  # Print notes without extra whitespace.
     print()  # Print a blank line between notes and questions.
     print(QUESTIONS.strip())  # Print questions for review.
+
+
+EXAMPLE_WALKTHROUGH_MAIN = """  # Store a walkthrough for main.
+Example Walkthrough: main
+- dict_syntax_and_constructor():
+  runs dict creation examples.
+- dict_methods():
+  runs dict methods examples.
+- dict_looping():
+  runs dict looping examples.
+- nested_dict_and_comprehension():
+  runs nested dict examples.
+- dict_copying():
+  runs copying examples.
+- set_basics():
+  runs set basics examples.
+- set_operations():
+  runs set operations examples.
+- standard_library_imports():
+  runs import examples.
+- name_guard_example():
+  runs the __name__ guard example.
+- print(NOTES.strip()):
+  prints the Notes block.
+- print():
+  prints a blank line.
+- print(QUESTIONS.strip()):
+  prints the Questions block.
+"""
 
 
 if __name__ == "__main__":  # Run main only when executed directly.

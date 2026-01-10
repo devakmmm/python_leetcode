@@ -19,8 +19,28 @@ def random_city():  # Define a function to pick a random city.
     return choice(cities)  # Return a random city from the list.
 
 
+EXAMPLE_WALKTHROUGH_RANDOM_CITY = """  # Store a walkthrough for random_city.
+Example Walkthrough: random_city
+- cities = [...]:
+  creates a list of city names.
+- return choice(cities):
+  returns one random city from the list.
+Example usage:
+- random_city() might return "Buffalo".
+"""
+
+
 def describe():  # Define a function to summarize the data.
     return f"NY: capital={capital}, population={population}, area={area_sq_miles} sq mi"  # Build summary.
+
+
+EXAMPLE_WALKTHROUGH_DESCRIBE = """  # Store a walkthrough for describe.
+Example Walkthrough: describe
+- return f"NY: capital=...":
+  builds a summary string from module constants.
+Example usage:
+- describe() returns "NY: capital=Albany, population=19453561, area=54555 sq mi".
+"""
 
 
 NOTES = """  # Store study notes as a multiline string.
@@ -45,6 +65,23 @@ def main():  # Define the script entry point.
     print(NOTES.strip())  # Print notes without extra whitespace.
     print()  # Print a blank line between notes and questions.
     print(QUESTIONS.strip())  # Print questions for review.
+
+
+EXAMPLE_WALKTHROUGH_MAIN = """  # Store a walkthrough for main.
+Example Walkthrough: main
+- print("Capital:", capital):
+  outputs: Capital: Albany
+- print("Random city:", random_city()):
+  outputs a random city name.
+- print(describe()):
+  outputs the summary string.
+- print(NOTES.strip()):
+  prints the Notes block.
+- print():
+  prints a blank line.
+- print(QUESTIONS.strip()):
+  prints the Questions block.
+"""
 
 
 if __name__ == "__main__":  # Run main only when executed directly.
