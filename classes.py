@@ -8,60 +8,60 @@ Learning goals:
 """
 
 
-class Vehicle:
-    wheels = 0
+class Vehicle:  # Define a base class for vehicles.
+    wheels = 0  # Define a class variable shared by all vehicles.
 
-    def __init__(self, make, model):
-        self.make = make
-        self.model = model
+    def __init__(self, make, model):  # Initialize a vehicle instance.
+        self.make = make  # Store the manufacturer.
+        self.model = model  # Store the model name.
 
-    def moves(self):
-        print("The vehicle moves")
+    def moves(self):  # Define a generic movement method.
+        print("The vehicle moves")  # Print a generic movement message.
 
-    def get_make_and_model(self):
-        return f"{self.make} {self.model}"
+    def get_make_and_model(self):  # Define a method to format details.
+        return f"{self.make} {self.model}"  # Return make and model as a string.
 
-    def __str__(self):
-        return f"{self.__class__.__name__}({self.get_make_and_model()})"
-
-
-class Airplane(Vehicle):
-    def __init__(self, make, model, wings):
-        super().__init__(make, model)
-        self.wings = wings
-
-    def moves(self):
-        print("The airplane flies")
+    def __str__(self):  # Define a human-friendly string representation.
+        return f"{self.__class__.__name__}({self.get_make_and_model()})"  # Build label.
 
 
-class Boat(Vehicle):
-    def moves(self):
-        print("The boat sails")
+class Airplane(Vehicle):  # Define a subclass for airplanes.
+    def __init__(self, make, model, wings):  # Initialize airplane with wings.
+        super().__init__(make, model)  # Initialize parent fields.
+        self.wings = wings  # Store wings description.
+
+    def moves(self):  # Override movement behavior.
+        print("The airplane flies")  # Print airplane-specific movement.
 
 
-class GolfCart(Vehicle):
-    wheels = 4
+class Boat(Vehicle):  # Define a subclass for boats.
+    def moves(self):  # Override movement behavior.
+        print("The boat sails")  # Print boat-specific movement.
 
 
-def demo_objects():
-    print("\nObjects")
-    print("-------")
-    mycar = Vehicle("Toyota", "Corolla")
-    myplane = Airplane("Boeing", "747", "Two")
-    myboat = Boat("Yamaha", "242X")
-    mycart = GolfCart("Club Car", "Precedent")
-
-    print("mycar:", mycar.get_make_and_model())
-    print("myplane:", myplane.get_make_and_model())
-    print("myboat:", myboat.get_make_and_model())
-    print("mycart:", mycart.get_make_and_model())
-
-    for v in (mycar, myplane, myboat, mycart):
-        v.moves()
-        print("str:", str(v), "wheels:", v.wheels)
+class GolfCart(Vehicle):  # Define a subclass for golf carts.
+    wheels = 4  # Override wheels for golf carts.
 
 
-NOTES = """
+def demo_objects():  # Define a demo that creates and uses objects.
+    print("\nObjects")  # Print a demo header.
+    print("-------")  # Print an underline for the header.
+    mycar = Vehicle("Toyota", "Corolla")  # Create a Vehicle instance.
+    myplane = Airplane("Boeing", "747", "Two")  # Create an Airplane instance.
+    myboat = Boat("Yamaha", "242X")  # Create a Boat instance.
+    mycart = GolfCart("Club Car", "Precedent")  # Create a GolfCart instance.
+
+    print("mycar:", mycar.get_make_and_model())  # Show car details.
+    print("myplane:", myplane.get_make_and_model())  # Show plane details.
+    print("myboat:", myboat.get_make_and_model())  # Show boat details.
+    print("mycart:", mycart.get_make_and_model())  # Show cart details.
+
+    for v in (mycar, myplane, myboat, mycart):  # Iterate over vehicles.
+        v.moves()  # Call the polymorphic moves method.
+        print("str:", str(v), "wheels:", v.wheels)  # Print object string and wheels.
+
+
+NOTES = """  # Store study notes as a multiline string.
 Notes:
 - self is the instance; methods can read and modify instance data.
 - Inheritance lets subclasses reuse and override behavior.
@@ -69,7 +69,7 @@ Notes:
 """
 
 
-QUESTIONS = """
+QUESTIONS = """  # Store practice questions as a multiline string.
 Questions:
 1) What is the difference between a class variable and an instance variable?
 2) Why do we call super().__init__ in Airplane?
@@ -78,12 +78,12 @@ Questions:
 """
 
 
-def main():
-    demo_objects()
-    print(NOTES.strip())
-    print()
-    print(QUESTIONS.strip())
+def main():  # Define the script entry point.
+    demo_objects()  # Run the object demo.
+    print(NOTES.strip())  # Print notes without extra whitespace.
+    print()  # Print a blank line between notes and questions.
+    print(QUESTIONS.strip())  # Print questions for review.
 
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__":  # Run main only when executed directly.
+    main()  # Invoke the entry point.

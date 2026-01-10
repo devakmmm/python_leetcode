@@ -10,160 +10,160 @@ Learning goals:
 """
 
 
-def show_section(title):
-    print("\n" + title)
-    print("-" * len(title))
+def show_section(title):  # Define a helper to label output sections.
+    print("\n" + title)  # Print a blank line and the section title.
+    print("-" * len(title))  # Print a dashed underline under the title.
 
 
-def membership_and_indexing():
-    show_section("Membership and indexing")
-    users = ["dev", "ops", "admin"]
-    data = ["23", "45", "devops"]
+def membership_and_indexing():  # Define a demo for membership and indexing.
+    show_section("Membership and indexing")  # Display the section header.
+    users = ["dev", "ops", "admin"]  # Create a list of users.
+    data = ["23", "45", "devops"]  # Create a list of data strings.
 
-    print("users:", users)
-    print("'dev' in users:", "dev" in users)
-    print("'dev' not in users:", "dev" not in users)
-    print("data:", data)
-    print("'23' in data:", "23" in data)
-    print("'devops' not in data:", "devops" not in data)
+    print("users:", users)  # Print the users list.
+    print("'dev' in users:", "dev" in users)  # Check membership.
+    print("'dev' not in users:", "dev" not in users)  # Check non-membership.
+    print("data:", data)  # Print the data list.
+    print("'23' in data:", "23" in data)  # Check membership in data.
+    print("'devops' not in data:", "devops" not in data)  # Check non-membership in data.
 
-    print("last user:", users[-1])
-    print("first data item:", data[0])
-    print("users[1:3]:", users[1:3])
-    print("data[:2]:", data[:2])
-    print("users[1:]:", users[1:])
-    print("data[-2:]:", data[-2:])
-    print("users[:-1]:", users[:-1])
-
-
-def mutation_examples():
-    show_section("Mutation: append, insert, and slice assignment")
-    users = ["dev", "ops", "admin"]
-
-    users.append("guest")
-    print("after append:", users)
-
-    users.insert(1, "superuser")
-    print("after insert:", users)
-
-    users[2:2] = ["tester", "developer"]
-    print("after slice insert:", users)
-
-    users[1:3] = ["sysadmin"]
-    print("after slice replace:", users)
+    print("last user:", users[-1])  # Access the last element.
+    print("first data item:", data[0])  # Access the first element.
+    print("users[1:3]:", users[1:3])  # Slice elements 1 to 2.
+    print("data[:2]:", data[:2])  # Slice the first two elements.
+    print("users[1:]:", users[1:])  # Slice from index 1 to end.
+    print("data[-2:]:", data[-2:])  # Slice the last two elements.
+    print("users[:-1]:", users[:-1])  # Slice all but the last element.
 
 
-def removal_examples():
-    show_section("Removal: remove, pop, del, clear")
-    users = ["dev", "ops", "admin", "guest"]
+def mutation_examples():  # Define a demo for list mutation.
+    show_section("Mutation: append, insert, and slice assignment")  # Display header.
+    users = ["dev", "ops", "admin"]  # Create a list to mutate.
 
-    if "dev" in users:
-        users.remove("dev")
-    print("after remove:", users)
+    users.append("guest")  # Append a new element.
+    print("after append:", users)  # Show the updated list.
 
-    last = users.pop()
-    print("popped:", last, "remaining:", users)
+    users.insert(1, "superuser")  # Insert at index 1.
+    print("after insert:", users)  # Show the updated list.
 
-    del users[0]
-    print("after del index 0:", users)
+    users[2:2] = ["tester", "developer"]  # Insert via slice assignment.
+    print("after slice insert:", users)  # Show the updated list.
 
-    users.clear()
-    print("after clear:", users)
-
-
-def extend_and_concat():
-    show_section("Extend, concatenate, and nest lists")
-    users = ["dev", "ops"]
-    users.extend(["admin", "manager"])
-    print("after extend:", users)
-
-    list1 = [1, 2, 3]
-    list2 = [4, 5, 6]
-    combined = list1 + list2
-    print("combined:", combined)
-
-    nested = [users, list2]
-    print("nested list:", nested)
+    users[1:3] = ["sysadmin"]  # Replace a slice with one element.
+    print("after slice replace:", users)  # Show the updated list.
 
 
-def sort_and_reverse():
-    show_section("Sorting and reversing")
-    users = ["dev", "ops", "admin", "guest"]
-    print("original:", users)
-    print("sorted copy:", sorted(users))
+def removal_examples():  # Define a demo for removing elements.
+    show_section("Removal: remove, pop, del, clear")  # Display header.
+    users = ["dev", "ops", "admin", "guest"]  # Create a list to modify.
 
-    users.sort()
-    print("sorted in place:", users)
+    if "dev" in users:  # Check that the value exists before removing.
+        users.remove("dev")  # Remove the first matching element.
+    print("after remove:", users)  # Show the updated list.
 
-    users.sort(reverse=True)
-    print("sorted reverse:", users)
+    last = users.pop()  # Remove and capture the last element.
+    print("popped:", last, "remaining:", users)  # Show removed and remaining.
 
-    users.sort(key=len)
-    print("sorted by length:", users)
+    del users[0]  # Delete the element at index 0.
+    print("after del index 0:", users)  # Show the updated list.
 
-    users.reverse()
-    print("reversed in place:", users)
-    print("reversed copy:", list(reversed(users)))
+    users.clear()  # Remove all elements from the list.
+    print("after clear:", users)  # Show the empty list.
 
 
-def copy_and_alias():
-    show_section("Copying vs aliasing (shallow copies)")
-    users = ["dev", "ops", "admin"]
-    alias = users
-    copy1 = users.copy()
-    copy2 = users[:]
-    copy3 = list(users)
+def extend_and_concat():  # Define a demo for extend and concatenation.
+    show_section("Extend, concatenate, and nest lists")  # Display header.
+    users = ["dev", "ops"]  # Create a list of users.
+    users.extend(["admin", "manager"])  # Extend with multiple elements.
+    print("after extend:", users)  # Show the updated list.
 
-    users.append("guest")
-    print("original:", users)
-    print("alias:", alias)
-    print("copy1:", copy1)
-    print("copy2:", copy2)
-    print("copy3:", copy3)
+    list1 = [1, 2, 3]  # Define the first list.
+    list2 = [4, 5, 6]  # Define the second list.
+    combined = list1 + list2  # Concatenate lists into a new list.
+    print("combined:", combined)  # Show the concatenated result.
 
-
-def plus_equals_demo():
-    show_section("+= with lists")
-    users = ["dev", "ops"]
-    users += ["newuser"]
-    print("+= list:", users)
-
-    users = ["dev", "ops"]
-    users += "newuser"
-    print("+= string (each char added):", users)
+    nested = [users, list2]  # Create a nested list.
+    print("nested list:", nested)  # Show the nested structure.
 
 
-def comprehension_examples():
-    show_section("List comprehensions")
-    squares = [n * n for n in range(1, 6)]
-    print("squares:", squares)
+def sort_and_reverse():  # Define a demo for sorting and reversing.
+    show_section("Sorting and reversing")  # Display header.
+    users = ["dev", "ops", "admin", "guest"]  # Create a list to sort.
+    print("original:", users)  # Show the original list.
+    print("sorted copy:", sorted(users))  # Show a sorted copy.
 
-    even_squares = [n * n for n in range(1, 11) if n % 2 == 0]
-    print("even squares:", even_squares)
+    users.sort()  # Sort the list in place.
+    print("sorted in place:", users)  # Show the sorted list.
 
-    upper_users = [name.upper() for name in ["dev", "ops", "admin"]]
-    print("upper case:", upper_users)
+    users.sort(reverse=True)  # Sort in descending order.
+    print("sorted reverse:", users)  # Show the descending order list.
 
+    users.sort(key=len)  # Sort by string length.
+    print("sorted by length:", users)  # Show the length-sorted list.
 
-def tuple_examples():
-    show_section("Tuples")
-    mytuple = ("dev", "ops", "admin")
-    another_tuple = (1, 2, 3, 4, 5, 6, 7, 7)
-
-    print("mytuple:", mytuple)
-    print("another_tuple:", another_tuple)
-    print("count of 7:", another_tuple.count(7))
-    print("index of 3:", another_tuple.index(3))
-
-    one, two, *three = another_tuple
-    print("unpacked:", one, two, three)
-
-    newlist = list(mytuple)
-    newlist.append("guest")
-    print("tuple -> list -> appended:", newlist)
+    users.reverse()  # Reverse the list in place.
+    print("reversed in place:", users)  # Show the reversed list.
+    print("reversed copy:", list(reversed(users)))  # Show a reversed copy.
 
 
-NOTES = """
+def copy_and_alias():  # Define a demo for copying and aliasing.
+    show_section("Copying vs aliasing (shallow copies)")  # Display header.
+    users = ["dev", "ops", "admin"]  # Create a list to copy.
+    alias = users  # Create a reference alias.
+    copy1 = users.copy()  # Create a shallow copy via copy().
+    copy2 = users[:]  # Create a shallow copy via slicing.
+    copy3 = list(users)  # Create a shallow copy via list().
+
+    users.append("guest")  # Mutate the original list.
+    print("original:", users)  # Show the original list.
+    print("alias:", alias)  # Show the alias reference.
+    print("copy1:", copy1)  # Show the copy made with copy().
+    print("copy2:", copy2)  # Show the copy made with slicing.
+    print("copy3:", copy3)  # Show the copy made with list().
+
+
+def plus_equals_demo():  # Define a demo for += with lists.
+    show_section("+= with lists")  # Display header.
+    users = ["dev", "ops"]  # Create a list of users.
+    users += ["newuser"]  # Extend the list with another list.
+    print("+= list:", users)  # Show the updated list.
+
+    users = ["dev", "ops"]  # Reset the list.
+    users += "newuser"  # Extend the list with each character.
+    print("+= string (each char added):", users)  # Show the character expansion.
+
+
+def comprehension_examples():  # Define a demo for list comprehensions.
+    show_section("List comprehensions")  # Display header.
+    squares = [n * n for n in range(1, 6)]  # Build squares with comprehension.
+    print("squares:", squares)  # Show the squares list.
+
+    even_squares = [n * n for n in range(1, 11) if n % 2 == 0]  # Filter evens.
+    print("even squares:", even_squares)  # Show the filtered list.
+
+    upper_users = [name.upper() for name in ["dev", "ops", "admin"]]  # Uppercase names.
+    print("upper case:", upper_users)  # Show the uppercase list.
+
+
+def tuple_examples():  # Define a demo for tuples.
+    show_section("Tuples")  # Display header.
+    mytuple = ("dev", "ops", "admin")  # Create a tuple of strings.
+    another_tuple = (1, 2, 3, 4, 5, 6, 7, 7)  # Create a tuple of ints.
+
+    print("mytuple:", mytuple)  # Print the first tuple.
+    print("another_tuple:", another_tuple)  # Print the second tuple.
+    print("count of 7:", another_tuple.count(7))  # Count occurrences of 7.
+    print("index of 3:", another_tuple.index(3))  # Find the index of 3.
+
+    one, two, *three = another_tuple  # Unpack into variables.
+    print("unpacked:", one, two, three)  # Show unpacked values.
+
+    newlist = list(mytuple)  # Convert tuple to list.
+    newlist.append("guest")  # Append to the list.
+    print("tuple -> list -> appended:", newlist)  # Show the list after append.
+
+
+NOTES = """  # Store study notes as a multiline string.
 Notes:
 - Lists are mutable dynamic arrays. Appending to the end is amortized O(1).
 - Inserting or removing in the middle is O(n) because elements shift.
@@ -173,7 +173,7 @@ Notes:
 """
 
 
-QUESTIONS = """
+QUESTIONS = """  # Store practice questions as a multiline string.
 Questions:
 1) What does users[1:3] = ["sysadmin"] do to the list length, and why?
 2) Explain the difference between append() and extend().
@@ -187,21 +187,21 @@ Questions:
 """
 
 
-def main():
-    membership_and_indexing()
-    mutation_examples()
-    removal_examples()
-    extend_and_concat()
-    sort_and_reverse()
-    copy_and_alias()
-    plus_equals_demo()
-    comprehension_examples()
-    tuple_examples()
+def main():  # Define the script entry point.
+    membership_and_indexing()  # Run membership and indexing examples.
+    mutation_examples()  # Run mutation examples.
+    removal_examples()  # Run removal examples.
+    extend_and_concat()  # Run extend and concatenation examples.
+    sort_and_reverse()  # Run sorting and reversing examples.
+    copy_and_alias()  # Run copy and alias examples.
+    plus_equals_demo()  # Run += demo.
+    comprehension_examples()  # Run comprehension examples.
+    tuple_examples()  # Run tuple examples.
 
-    print(NOTES.strip())
-    print()
-    print(QUESTIONS.strip())
+    print(NOTES.strip())  # Print notes without extra whitespace.
+    print()  # Print a blank line between notes and questions.
+    print(QUESTIONS.strip())  # Print questions for review.
 
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__":  # Run main only when executed directly.
+    main()  # Invoke the entry point.

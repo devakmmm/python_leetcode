@@ -7,54 +7,54 @@ Learning goals:
 """
 
 
-def show_section(title):
-    print("\n" + title)
-    print("-" * len(title))
+def show_section(title):  # Define a helper to label output sections.
+    print("\n" + title)  # Print a blank line and the section title.
+    print("-" * len(title))  # Print a dashed underline under the title.
 
 
-def local_and_global():
-    show_section("Local and global")
-    color = "red"
+def local_and_global():  # Define a demo for local vs global scope.
+    show_section("Local and global")  # Display the section header.
+    color = "red"  # Define a local variable in this function.
 
-    def inner():
-        local_color = "blue"
-        print("inner local_color:", local_color)
+    def inner():  # Define an inner function with its own scope.
+        local_color = "blue"  # Create a variable local to inner.
+        print("inner local_color:", local_color)  # Print inner's local value.
 
-    inner()
-    print("outer color:", color)
-
-
-def nonlocal_example():
-    show_section("nonlocal")
-    color = "red"
-
-    def outer():
-        color = "green"
-
-        def inner():
-            nonlocal color
-            color = "blue"
-            print("inner color:", color)
-
-        inner()
-        print("outer color:", color)
-
-    outer()
+    inner()  # Call the inner function.
+    print("outer color:", color)  # Print the outer variable.
 
 
-def global_example():
-    show_section("global")
-    counter = {"value": 0}
+def nonlocal_example():  # Define a demo for nonlocal usage.
+    show_section("nonlocal")  # Display the section header.
+    color = "red"  # Define an outer-scope variable.
 
-    def increment():
-        counter["value"] += 1
-        print("counter:", counter["value"])
+    def outer():  # Define an enclosing function.
+        color = "green"  # Shadow the outer variable.
 
-    increment()
-    increment()
+        def inner():  # Define an inner function.
+            nonlocal color  # Rebind the enclosing color variable.
+            color = "blue"  # Update the enclosing variable.
+            print("inner color:", color)  # Print the updated value.
+
+        inner()  # Call the inner function.
+        print("outer color:", color)  # Print the modified enclosing value.
+
+    outer()  # Call the enclosing function.
 
 
-NOTES = """
+def global_example():  # Define a demo that mutates a global-like object.
+    show_section("global")  # Display the section header.
+    counter = {"value": 0}  # Use a dict to mutate without global.
+
+    def increment():  # Define a function that updates the counter.
+        counter["value"] += 1  # Increment the stored counter value.
+        print("counter:", counter["value"])  # Print the updated value.
+
+    increment()  # Call increment once.
+    increment()  # Call increment again.
+
+
+NOTES = """  # Store study notes as a multiline string.
 Notes:
 - Python resolves names using LEGB: Local, Enclosing, Global, Built-in.
 - nonlocal rebinds variables in the nearest enclosing scope.
@@ -62,7 +62,7 @@ Notes:
 """
 
 
-QUESTIONS = """
+QUESTIONS = """  # Store practice questions as a multiline string.
 Questions:
 1) What is the LEGB lookup order?
 2) When do you need nonlocal?
@@ -71,15 +71,15 @@ Questions:
 """
 
 
-def main():
-    local_and_global()
-    nonlocal_example()
-    global_example()
+def main():  # Define the script entry point.
+    local_and_global()  # Run the local/global demo.
+    nonlocal_example()  # Run the nonlocal demo.
+    global_example()  # Run the global demo.
 
-    print(NOTES.strip())
-    print()
-    print(QUESTIONS.strip())
+    print(NOTES.strip())  # Print notes without extra whitespace.
+    print()  # Print a blank line between notes and questions.
+    print(QUESTIONS.strip())  # Print questions for review.
 
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__":  # Run main only when executed directly.
+    main()  # Invoke the entry point.

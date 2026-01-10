@@ -7,62 +7,63 @@ Learning goals:
 - Use lambdas for sorting keys
 """
 
-from functools import reduce
+from functools import reduce  # Import reduce for aggregation examples.
 
 
-def show_section(title):
-    print("\n" + title)
-    print("-" * len(title))
+def show_section(title):  # Define a helper to label output sections.
+    print("\n" + title)  # Print a blank line and the section title.
+    print("-" * len(title))  # Print a dashed underline under the title.
 
 
-def basic_lambda():
-    show_section("Basic lambda")
-    squared = lambda num: num * num
-    print("squared(5):", squared(5))
+def basic_lambda():  # Define a demo for basic lambda usage.
+    show_section("Basic lambda")  # Display the section header.
+    squared = lambda num: num * num  # Create a lambda that squares a number.
+    print("squared(5):", squared(5))  # Call the lambda and print the result.
 
-    def squared_def(num):
-        return num * num
+    def squared_def(num):  # Define an equivalent named function.
+        return num * num  # Return the square of the input.
 
-    print("squared_def(5):", squared_def(5))
-
-
-def closures_with_lambda():
-    show_section("Closures with lambda")
-    def function_builder(x):
-        return lambda num: x + num
-
-    add_five = function_builder(5)
-    subtract_three = function_builder(-3)
-    print("add_five(10):", add_five(10))
-    print("subtract_three(10):", subtract_three(10))
+    print("squared_def(5):", squared_def(5))  # Call the named function.
 
 
-def map_filter_reduce():
-    show_section("map, filter, reduce")
-    numbers = [1, 2, 3, 4, 5]
-    squared_numbers = list(map(lambda n: n * n, numbers))
-    odd_numbers = list(filter(lambda n: n % 2 != 0, numbers))
-    total = reduce(lambda acc, curr: acc + curr, numbers)
+def closures_with_lambda():  # Define a demo for lambda closures.
+    show_section("Closures with lambda")  # Display the section header.
 
-    print("squared_numbers:", squared_numbers)
-    print("odd_numbers:", odd_numbers)
-    print("total:", total)
+    def function_builder(x):  # Define a factory function that closes over x.
+        return lambda num: x + num  # Return a lambda that adds x to num.
 
-
-def sorting_with_lambda():
-    show_section("Sorting with lambda")
-    names = ["alice", "Bob", "charlie", "dave"]
-    print("case-insensitive:", sorted(names, key=lambda s: s.lower()))
-
-    people = [
-        {"name": "Alice", "age": 31},
-        {"name": "Bob", "age": 25},
-        {"name": "Charlie", "age": 29},
-    ]
-    print("sorted by age:", sorted(people, key=lambda p: p["age"]))
+    add_five = function_builder(5)  # Build a closure that adds five.
+    subtract_three = function_builder(-3)  # Build a closure that subtracts three.
+    print("add_five(10):", add_five(10))  # Use the closure.
+    print("subtract_three(10):", subtract_three(10))  # Use the closure.
 
 
-NOTES = """
+def map_filter_reduce():  # Define a demo for map, filter, and reduce.
+    show_section("map, filter, reduce")  # Display the section header.
+    numbers = [1, 2, 3, 4, 5]  # Create a list of numbers.
+    squared_numbers = list(map(lambda n: n * n, numbers))  # Map to squares.
+    odd_numbers = list(filter(lambda n: n % 2 != 0, numbers))  # Filter odds.
+    total = reduce(lambda acc, curr: acc + curr, numbers)  # Reduce to a sum.
+
+    print("squared_numbers:", squared_numbers)  # Show mapped results.
+    print("odd_numbers:", odd_numbers)  # Show filtered results.
+    print("total:", total)  # Show reduced result.
+
+
+def sorting_with_lambda():  # Define a demo for sorting with lambdas.
+    show_section("Sorting with lambda")  # Display the section header.
+    names = ["alice", "Bob", "charlie", "dave"]  # Create a list of names.
+    print("case-insensitive:", sorted(names, key=lambda s: s.lower()))  # Sort ignoring case.
+
+    people = [  # Build a list of dictionaries representing people.
+        {"name": "Alice", "age": 31},  # Add a person entry.
+        {"name": "Bob", "age": 25},  # Add a person entry.
+        {"name": "Charlie", "age": 29},  # Add a person entry.
+    ]  # Close the list of people.
+    print("sorted by age:", sorted(people, key=lambda p: p["age"]))  # Sort by age.
+
+
+NOTES = """  # Store study notes as a multiline string.
 Notes:
 - Lambdas are best for short, single-expression functions.
 - Prefer def for complex logic or when you need a docstring.
@@ -70,7 +71,7 @@ Notes:
 """
 
 
-QUESTIONS = """
+QUESTIONS = """  # Store practice questions as a multiline string.
 Questions:
 1) When would you choose a lambda over a def?
 2) Rewrite a map call as a list comprehension.
@@ -80,16 +81,16 @@ Questions:
 """
 
 
-def main():
-    basic_lambda()
-    closures_with_lambda()
-    map_filter_reduce()
-    sorting_with_lambda()
+def main():  # Define the script entry point.
+    basic_lambda()  # Run the basic lambda demo.
+    closures_with_lambda()  # Run the closure demo.
+    map_filter_reduce()  # Run map/filter/reduce demo.
+    sorting_with_lambda()  # Run the sorting demo.
 
-    print(NOTES.strip())
-    print()
-    print(QUESTIONS.strip())
+    print(NOTES.strip())  # Print notes without extra whitespace.
+    print()  # Print a blank line between notes and questions.
+    print(QUESTIONS.strip())  # Print questions for review.
 
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__":  # Run main only when executed directly.
+    main()  # Invoke the entry point.
