@@ -1,10 +1,10 @@
 """
-regex_quantifiers.py - Explain \d and \d+ in Python regular expressions.
+regex_quantifiers.py - Explain \\d and \\d+ in Python regular expressions.
 
 Learning goals:
-- Understand what \d matches
+- Understand what \\d matches
 - Understand what the + quantifier does
-- Compare \d vs \d+ results
+- Compare \\d vs \\d+ results
 """
 
 import re  # Import the regular expression module.

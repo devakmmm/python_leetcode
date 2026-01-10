@@ -73,7 +73,7 @@ Example Walkthrough: string_examples
   outputs: type(full): <class 'str'>
 - print("f-string:", f"{first} works in {last}"):
   outputs: f-string: dev works in ops
-- multiline = """...""":
+- multiline = (triple-quoted string):
   stores a multi-line string value.
 - print("multiline:\\n" + multiline):
   outputs a label, then the two-line text.
