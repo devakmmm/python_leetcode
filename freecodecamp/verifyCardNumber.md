@@ -111,3 +111,41 @@ The total becomes `81`, and:
 ```
 
 So the function returns `"INVALID!"`.
+
+# Cleaner, Easier Version
+
+This version is shorter and avoids building an extra list. It walks digits from right to left and flips a boolean to decide when to double.
+
+```python
+def verify_card_number(acc_num):
+    cleaned = acc_num.replace(" ", "").replace("-", "")
+
+    total = 0
+    double = False
+
+    for ch in reversed(cleaned):
+        digit = int(ch)
+
+        if double:
+            digit *= 2
+            if digit > 9:
+                digit -= 9
+
+        total += digit
+        double = not double
+
+    return "VALID!" if total % 10 == 0 else "INVALID!"
+```
+
+## Why This Is Cleaner
+
+- No index math: `reversed(cleaned)` gives digits from right to left directly.
+- No extra list: `int(ch)` converts each character on the fly.
+- Simple toggle: `double` flips each step to match the Luhn pattern.
+
+## Example Run
+
+```python
+print(verify_card_number("4539 1488 0343 6467"))  # VALID!
+print(verify_card_number("4539 1488 0343 6468"))  # INVALID!
+```
