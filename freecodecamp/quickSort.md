@@ -1,5 +1,7 @@
 # Quick Sort (Fixed Version)
 
+Quick sort is a good default when you want fast average performance and can accept that the worst case is slower. It is often used for in-memory sorting because it is typically fast in practice and has low extra memory usage compared to merge sort.
+
 This version actually partitions the list around a pivot, recurses on both sides, and combines the results. It avoids undefined variables and makes progress toward termination.
 
 ```python

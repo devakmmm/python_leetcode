@@ -1,5 +1,7 @@
 # Merge Sort Step: Left Half
 
+Merge sort is a strong choice when you want stable sorting and guaranteed O(n log n) performance. It is ideal for linked lists or when you can afford extra memory to get predictable runtime.
+
 To split the array, take everything from the start up to (but not including) the midpoint. This creates the left half that merge sort will recursively sort.
 
 ```python

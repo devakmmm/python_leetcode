@@ -1,5 +1,7 @@
 # Selection Sort
 
+Selection sort is best for very small lists or when swaps are expensive and you want to minimize them. It is easy to implement and understand, but it is slow for large inputs.
+
 Selection sort finds the smallest item in the unsorted part of the list and swaps it into the next position. It repeats this until the list is fully sorted.
 
 ## Implementation
