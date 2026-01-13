@@ -30,6 +30,24 @@ def hanoi_solver(total_disks):
     return "\n".join(moves)
 ```
 
+## Line-by-line Explanation
+
+- `def hanoi_solver(total_disks):` Defines a function that will compute all moves for a Tower of Hanoi puzzle with `total_disks` disks.
+- `rods = [list(range(total_disks, 0, -1)), [], []]` Creates the three rods as lists; the first rod starts with disks in descending order (largest to smallest) so the smallest disk is on top.
+- `moves = []` Initializes a list to store each snapshot of the rods after a move.
+- `def snapshot():` Starts a helper function that will capture the current state of all rods as a single string.
+- `return " ".join(str(rod) for rod in rods)` Converts each rod list to a string and joins them with spaces so each line matches the required output format.
+- `def move(n, src, dst, aux):` Starts the recursive helper that moves `n` disks from rod `src` to rod `dst` using `aux` as the temporary rod.
+- `if n == 0:` Defines the base case: if there are no disks to move, stop recursion.
+- `return` Exits the function in the base case, performing no action.
+- `move(n - 1, src, aux, dst)` Recursively moves the top `n-1` disks from `src` to `aux` so the largest disk is free.
+- `rods[dst].append(rods[src].pop())` Moves the top disk from the source rod to the destination rod by popping from `src` and appending to `dst`.
+- `moves.append(snapshot())` Records the new state immediately after a disk move.
+- `move(n - 1, aux, dst, src)` Recursively moves the `n-1` disks from `aux` onto `dst` to stack them on the largest disk.
+- `moves.append(snapshot())` Captures the starting configuration before any moves are made.
+- `move(total_disks, 0, 2, 1)` Kicks off the full solution: move all disks from rod 0 to rod 2 using rod 1 as auxiliary.
+- `return "\n".join(moves)` Joins all recorded snapshots with newlines to produce the final multi-line output string.
+
 ## Example
 
 ```python

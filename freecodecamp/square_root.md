@@ -11,6 +11,7 @@ until the interval is small enough to meet a tolerance.
 
 ## Implementation
 
+
 ```python
 """Square root using the bisection method."""
 
