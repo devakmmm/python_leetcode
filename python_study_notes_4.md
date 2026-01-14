@@ -19,6 +19,11 @@ loaded = json.loads(path.read_text(encoding="utf-8"))
 print(loaded["name"])
 ```
 
+Output:
+```
+Ada
+```
+
 `Path.write_text` and `read_text` make simple file I/O concise. Use `json` for
 structured data exchange.
 
@@ -40,6 +45,11 @@ def add(a, b):
 from .utils import add
 ```
 
+Output:
+```
+(no output; package layout and imports are defined)
+```
+
 Import from the package with `from mypkg import add`. Relative imports use a dot
 prefix.
 
@@ -56,6 +66,11 @@ def test_add():
     assert add(2, 3) == 5
 ```
 
+Output:
+```
+(no output; pytest reports passing tests)
+```
+
 Run with `pytest`. A failing assertion tells you exactly where behavior differs
 from expectation.
 
@@ -68,6 +83,11 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 logging.info("App started")
+```
+
+Output:
+```
+INFO:root:App started
 ```
 
 You can route logs to files and include timestamps, levels, and modules.
@@ -84,6 +104,11 @@ def buggy():
     return x / y
 ```
 
+Output:
+```
+(enters pdb; if continued, ZeroDivisionError)
+```
+
 `pdb` lets you step, inspect variables, and evaluate expressions before a crash.
 
 ## Performance — Big‑O and data structure choice
@@ -96,6 +121,12 @@ nums_set = set(nums)
 
 print(99999 in nums)     # O(n)
 print(99999 in nums_set) # O(1) average
+```
+
+Output:
+```
+True
+True
 ```
 
 List membership is linear; set membership is constant time on average.
@@ -123,6 +154,11 @@ def fib(n):
 print(datetime.now().isoformat())
 ```
 
+Output (example):
+```
+2024-01-01T12:34:56.789012
+```
+
 `Counter` counts items, `deque` is a fast queue, `islice` slices iterators,
 `lru_cache` memoizes functions, and `datetime` handles time.
 
@@ -141,6 +177,11 @@ t.start()
 t.join()
 ```
 
+Output:
+```
+work
+```
+
 Threads help with I/O‑bound tasks, processes help with CPU‑bound tasks, and
 `asyncio` is great for high‑concurrency I/O.
 
@@ -155,6 +196,11 @@ Keep projects reproducible and readable.
 
 # Save dependencies
 # pip freeze > requirements.txt
+```
+
+Output:
+```
+(no output; shell commands run in a terminal)
 ```
 
 Use PEP 8 style, meaningful names, and small functions. Consistent formatting

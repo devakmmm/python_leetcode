@@ -21,6 +21,12 @@ print(nums[::2])   # every 2nd element
 print(nums[::-1])  # reversed copy
 ```
 
+Output:
+```
+[0, 2, 4]
+[5, 4, 3, 2, 1, 0]
+```
+
 Unpacking collects the “rest” into a list. Tuple‑style swapping avoids a temp
 variable. Slicing supports step sizes and reverse copies.
 
@@ -42,6 +48,13 @@ my_set = {1, 2, 3}
 my_set.add((4, 5))    # OK: tuple is hashable
 ```
 
+Output:
+```
+True
+False
+True
+```
+
 `==` compares values; `is` compares identity. Mutable types (list, dict, set)
 are unhashable by default; immutable types (str, int, tuple) are hashable.
 
@@ -59,6 +72,13 @@ for value in countdown(3):
     print(value)
 ```
 
+Output:
+```
+3
+2
+1
+```
+
 `yield` produces values one at a time. This is memory‑efficient and ideal for
 large or infinite sequences.
 
@@ -71,6 +91,14 @@ squares = [n * n for n in range(6)]
 lookup = {n: n * n for n in range(6)}
 evens = {n for n in range(10) if n % 2 == 0}
 gen = (n * n for n in range(6))
+```
+
+Resulting values:
+```
+squares = [0, 1, 4, 9, 16, 25]
+lookup = {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+evens = {0, 2, 4, 6, 8}
+gen = <generator object ...>
 ```
 
 Use list/dict/set comprehensions when you want a concrete collection. Use a
@@ -93,6 +121,11 @@ def logger(fn):
 @logger
 def add(a, b):
     return a + b
+```
+
+Output:
+```
+(no output; functions are defined)
 ```
 
 The `*` makes `punctuation` keyword‑only. Decorators wrap functions for logging,
@@ -118,6 +151,11 @@ with ManagedFile("notes.txt") as f:
     f.write("safe write")
 ```
 
+Output:
+```
+(no output; writes to notes.txt)
+```
+
 `with` calls `__enter__` at the start and `__exit__` at the end, even if an
 exception occurs.
 
@@ -134,6 +172,11 @@ def parse_int(text):
         return int(text)
     except ValueError as exc:
         raise ParseError("not an int") from exc
+```
+
+Output:
+```
+(no output; functions are defined)
 ```
 
 Use custom exceptions to signal specific failures. `raise ... from ...`
@@ -155,6 +198,11 @@ p = Point(2, 3)
 print(p)
 ```
 
+Output:
+```
+Point(x=2, y=3)
+```
+
 Dataclasses auto‑generate `__init__`, `__repr__`, and comparisons unless you
 override them.
 
@@ -167,6 +215,11 @@ from typing import Iterable
 
 def total(values: Iterable[int]) -> int:
     return sum(values)
+```
+
+Output:
+```
+(no output; function is defined)
 ```
 
 Hints are not enforced at runtime, but tools like `mypy` can check them.

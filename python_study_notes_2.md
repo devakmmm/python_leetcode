@@ -20,6 +20,11 @@ def keyword_arguments(**kwargs):
     print(kwargs)
 ```
 
+Output:
+```
+(no output; functions are defined)
+```
+
 `*args` collects positional arguments into a tuple; `**kwargs` collects keyword
 arguments into a dict. Returning `None` is a common way to signal invalid input.
 
@@ -31,6 +36,12 @@ Lambdas are small, anonymous functions.
 numbers = [1, 2, 3, 4, 5]
 squares = list(map(lambda n: n * n, numbers))
 odds = list(filter(lambda n: n % 2 != 0, numbers))
+```
+
+Resulting values:
+```
+squares = [1, 4, 9, 16, 25]
+odds = [1, 3, 5]
 ```
 
 `map` transforms each item; `filter` keeps items that pass a condition. Prefer
@@ -50,6 +61,11 @@ def outer():
     return color
 
 print(outer())
+```
+
+Output:
+```
+blue
 ```
 
 `nonlocal` lets you rebind a variable from the enclosing scope, so `outer`
@@ -72,6 +88,11 @@ counter = counter_factory(10)
 print(counter(), counter())
 ```
 
+Output:
+```
+11 12
+```
+
 Each call to `counter_factory` creates an independent counter with its own
 state.
 
@@ -86,6 +107,11 @@ def factorial(n):
     if n in (0, 1):
         return 1
     return n * factorial(n - 1)
+```
+
+Output:
+```
+(no output; function is defined)
 ```
 
 `factorial(5)` returns `120`. Without a base case, recursion never ends.
@@ -105,6 +131,11 @@ class Vehicle:
 class Boat(Vehicle):
     def moves(self):
         print("The boat sails")
+```
+
+Output:
+```
+(no output; classes are defined)
 ```
 
 `Boat` inherits from `Vehicle` but overrides `moves` to change behavior.
@@ -127,6 +158,11 @@ class BankAccount:
         self.balance -= amount
 ```
 
+Output:
+```
+(no output; classes are defined)
+```
+
 In `oop_proj.py`, you import these classes and call methods to simulate account
 activity.
 
@@ -145,6 +181,11 @@ import newyork
 print(newyork.capital)
 ```
 
+Output:
+```
+Albany
+```
+
 When a file is run directly, `__name__ == "__main__"` is True; when imported,
 `__name__` is the module name.
 
@@ -159,6 +200,11 @@ file_path = base / "data.csv"
 print(file_path.with_suffix(".json"))
 ```
 
+Output:
+```
+projects/demo/data.json
+```
+
 `with_suffix` swaps extensions without manual string manipulation.
 
 ## hello_person.py — CLI with argparse
@@ -171,6 +217,11 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--name", required=True)
 args = parser.parse_args()
 print(f"Hello, {args.name}!")
+```
+
+Output (example run):
+```
+Hello, Dave!
 ```
 
 Running `python3 hello_person.py --name Dave` prints a personalized greeting.
@@ -191,6 +242,11 @@ def decide_winner(player, computer):
     if player == computer:
         return "tie"
     return "win" if wins[player] == computer else "lose"
+```
+
+Output:
+```
+(no output; function is defined)
 ```
 
 `rps2.py` adds a play-again loop and a score. `rps3.py` adds a best‑of match.

@@ -15,6 +15,11 @@ def greet(name):
 print(greet("world"))
 ```
 
+Output:
+```
+Hello, world!
+```
+
 This defines a function that returns a string and prints it. Output:
 `Hello, world!`.
 
@@ -37,6 +42,14 @@ value = None
 print(value is None)
 ```
 
+Output:
+```
+DEV OPS
+d s ev
+3 1 1000
+True
+```
+
 `full.upper()` returns a new string (strings are immutable). `//` is integer
 division, `%` is remainder, and `**` is exponentiation. `None` is a singleton,
 so use `is None` to check for it.
@@ -51,6 +64,13 @@ coins = 3
 print(f"{person} has {coins} coins left.")
 print(f"{2.25 * 10:.2f}")
 print(f"{2.25 / 10:.2%}")
+```
+
+Output:
+```
+Dave has 3 coins left.
+22.50
+22.50%
 ```
 
 `:.2f` formats floats to two decimals; `:.2%` converts to a percentage string.
@@ -69,6 +89,12 @@ print(users)
 
 mytuple = ("dev", "ops", "admin")
 one, two, *rest = (1, 2, 3, 4)
+```
+
+Output:
+```
+['ops', 'admin']
+['dev', 'sysadmin', 'guest']
 ```
 
 Slice assignment can change list length. Tuple unpacking collects extra values
@@ -90,6 +116,13 @@ my_set.add(4)
 print(my_set | {3, 4, 5})
 ```
 
+Output:
+```
+Margherita 0
+['name', 'price'] ['Margherita', 10]
+{1, 2, 3, 4, 5}
+```
+
 `get` avoids `KeyError` by returning a default. Set union (`|`) combines unique
 items; duplicates collapse automatically.
 
@@ -107,6 +140,13 @@ while count > 0:
     count -= 1
 ```
 
+Output:
+```
+1 Alice
+2 Bob
+3 Charlie
+```
+
 `enumerate` yields `(index, item)` pairs. `while` loops continue until the
 condition is False.
 
@@ -118,6 +158,11 @@ Use a ternary expression for short, readable branches.
 score = 87
 grade = "pass" if score >= 60 else "fail"
 print(grade)
+```
+
+Output:
+```
+pass
 ```
 
 This selects `"pass"` because the condition is True.
@@ -133,6 +178,13 @@ book = "Fahrenheit 451"
 print(re.search(r"\d", book).group())
 print(re.search(r"\d+", book).group())
 print(re.findall(r"\d+", "Room 451, Floor 7"))
+```
+
+Output:
+```
+4
+451
+['451', '7']
 ```
 
 `\d` finds the first digit (`4`), while `\d+` finds the full number (`451`).
