@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Neetcode Roadmap Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:wght@400;600&family=Space+Grotesk:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">practice lab</p>
+          <h1>Neetcode Roadmap Lab</h1>
+          <p class="lead">
+            A freeCodeCamp-inspired path for Neetcode patterns. Learn one pattern
+            at a time, solve curated drills, and keep progress locally.
+          </p>
+          <div class="hero-actions">
+            <button class="primary" id="start-roadmap">Start the roadmap</button>
+            <button class="ghost" id="shuffle-focus">Shuffle focus</button>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="stat-card">
+            <p class="stat-label">Total lessons</p>
+            <p class="stat-value" id="stat-total">0</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Completed</p>
+            <p class="stat-value" id="stat-complete">0</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Completion</p>
+            <p class="stat-value" id="stat-percent">0%</p>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+      </header>
+
+      <section class="focus" aria-live="polite">
+        <div>
+          <p class="eyebrow">today's focus</p>
+          <h2 id="focus-title">Pick a lesson to begin</h2>
+          <p class="focus-detail" id="focus-detail">
+            We will suggest a lesson from the roadmap once you start.
+          </p>
+        </div>
+        <button class="primary" id="focus-jump">Go to lesson</button>
+      </section>
+
+      <section class="layout">
+        <aside class="map">
+          <div class="map-head">
+            <h2>Roadmap</h2>
+            <div class="filters" role="tablist" aria-label="Lesson filters">
+              <button class="filter is-active" data-filter="all">All</button>
+              <button class="filter" data-filter="open">Open</button>
+              <button class="filter" data-filter="done">Done</button>
+            </div>
+          </div>
+          <ul class="module-list" id="module-list"></ul>
+        </aside>
+
+        <main class="board">
+          <div class="board-head">
+            <div>
+              <p class="eyebrow" id="module-stage">Stage</p>
+              <h2 id="module-title">Choose a module</h2>
+              <p class="module-focus" id="module-focus">
+                Pick a module on the left to see its lessons.
+              </p>
+            </div>
+            <div class="board-count" id="module-count">0 / 0</div>
+          </div>
+          <div class="lesson-list" id="lesson-list"></div>
+        </main>
+      </section>
+
+      <section class="footer">
+        <div>
+          <h3>How this works</h3>
+          <p>
+            Each lesson includes a goal, approach, example, starter code, and a
+            guided step plan. Mark lessons complete to track progress. Data is
+            stored locally in your browser.
+          </p>
+        </div>
+        <div class="footer-panel">
+          <p class="eyebrow">next step</p>
+          <p class="footer-cta">Finish a module, then redo the drills without help.</p>
+        </div>
+      </section>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
